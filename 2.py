@@ -175,3 +175,25 @@ print(m + g)
 print(m * 3)
 print(len(m))
 print(m)
+
+# -------------------------------------------------- #
+
+class Temperature:
+    degrees: float
+    
+    def __init__(self, degrees: float):
+        self.degrees = degrees
+        
+    def __add__(self, other: Temperature): return Temperature(self.degrees - other.degrees)
+    def __sub__(self, other: Temperature): return Temperature(self.degrees - other.degrees)
+    def __mul__(self, factor: int): return Temperature(self.degrees * factor)
+    
+    def __str__(self): return f'{self.degrees}C'
+    
+t = Temperature(32.4)
+k = Temperature(36.6)
+
+print(t + k)
+print(t - k)
+print(t * 4)
+print(t)
