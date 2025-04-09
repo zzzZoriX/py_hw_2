@@ -33,8 +33,12 @@ class Money:
     dollars: int; cents: int
     
     def __init__(self, dollars: int, cents: int):
-        self.cents = cents
         self.dollars = dollars
+        self.cents = cents
+        if(self.cents >= 100):
+            mul: int = self.cents // 100
+            self.dollars += 1 * mul
+            self.cents -= 100 * mul
         
     def __add__(self, other: Money):
         dollars: int = self.dollars + other.dollars
@@ -56,7 +60,7 @@ class Money:
     
     def __str__(self): return f'{self.dollars}.{self.cents}$'
     
-a = Money(12, 42)
+a = Money(12, 10000)
 b = Money(1, 7)
 
 print(a + b)
